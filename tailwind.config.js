@@ -5,6 +5,14 @@ module.exports = {
     "./src/components/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    colors: {
+      blue: "#00b8d9",
+      "blue-dark": "#002255",
+      gray: "#999999",
+    },
+    fontFamily: {
+      sans: ["Mont SemiBold"],
+    },
     extend: {},
   },
   plugins: [],

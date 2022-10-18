@@ -1,43 +1,65 @@
 import React from "react";
+import { graphql, StaticQuery } from "gatsby";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
 
-const Team = () => {
+const Team = ({ data }) => {
+  const teammates = data.allContentfulInnobiEmployee.nodes;
+
+  const teammateHtml = teammates.map((teammate) => {
+    const renderedImage = getImage(teammate.image);
+    return (
+      <div className="relative container flex flex-col max-w-6xl mx-auto my-16 px-6 text-gray-900 md:flex-row md:px-0">
+        <GatsbyImage image={getImage(teammate.image)} alt={teammate.name} />
+        <div className="top-48 pr-0 bg-white md:absolute md:right-0 md:py-20 md:pl-20">
+          <h2 className="max-w-lg mt-10 mb-6 font-sans text-4xl text-center text-gray-900 uppercase md:text-5xl md:mt-0 md:text-left">
+            {teammate.name}
+          </h2>
+          <p className="max-w-md text-center md:text-left">
+            {renderRichText(teammate.about)}
+          </p>
+        </div>
+      </div>
+    );
+  });
+
   return (
     <section id="team">
-      <div className="relative container flex flex-col max-w-6xl mx-auto my-16 px-6 text-gray-900 md:flex-row md:px-0">
-        <img
-          src="https://tailwindfromscratch.com/website-projects/loopstudios/images/desktop/image-interactive.jpg"
-          alt="Will Ayd"
-        />
-        <div className="top-48 pr-0 bg-white md:absolute md:right-0 md:py-20 md:pl-20">
-          <h2 className="max-w-lg mt-10 mb-6 font-sans text-4xl text-center text-gray-900 uppercase md:text-5xl md:mt-0 md:text-left">
-            Will Ayd
-          </h2>
-          <p className="max-w-md text-center md:text-left">
-            Will Ayd is the owner and founder of innobi. Will brings 15 years of
-            experience in enterprise analytics, balanced with his contributions
-            to open-source tools like pandas.
-          </p>
-        </div>
+      <div class="container mx-auto px-3">
+        <h2 class="text-4xl mb-6 font-bold text-center">Our Team</h2>
       </div>
-      <div className="relative container flex flex-col max-w-6xl mx-auto my-16 px-6 text-gray-900 md:flex-row md:px-0">
-        <div className="top-48 pr-0 bg-white md:absolute md:right-0 md:py-20 md:pl-20">
-          <h2 className="max-w-lg mt-10 mb-6 font-sans text-4xl text-center text-gray-900 uppercase md:text-5xl md:mt-0 md:text-left">
-            Jibeom Suh
-          </h2>
-          <p className="max-w-md text-center md:text-left">
-            Jibeom "Joe" Suh is a rising graduate student at the University of
-            Southern California. With a degree in business analytics, Jibeom has
-            found his niche leading the Tableau Student User Group and
-            developing a variety of dashboards for the USC football program.
-          </p>
-        </div>
-        <img
-          src="https://tailwindfromscratch.com/website-projects/loopstudios/images/desktop/image-interactive.jpg"
-          alt="Jibeom Suh"
-        />
-      </div>
+      {teammateHtml}
     </section>
   );
 };
 
-export default Team;
+export default function MyTeam(props) {
+  return (
+    <StaticQuery
+      query={graphql`
+        {
+          allContentfulInnobiEmployee(
+            sort: { order: ASC, fields: contentful_id }
+          ) {
+            distinct(field: contentful_id)
+            nodes {
+              name
+              about {
+                raw
+              }
+              image {
+                gatsbyImageData(
+                  width: 730
+                  height: 500
+                  placeholder: BLURRED
+                  formats: [AUTO]
+                )
+              }
+            }
+          }
+        }
+      `}
+      render={(data) => <Team data={data} {...props} />}
+    />
+  );
+}

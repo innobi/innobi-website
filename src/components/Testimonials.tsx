@@ -4,6 +4,12 @@ import { StaticImage } from "gatsby-plugin-image";
 const Testimonials = () => {
   return (
     <section id="testimonials" className="bg-gray-100 py-16">
+      <div class="container mx-auto px-3">
+        <h2 class="text-4xl mb-6 font-bold text-center">What we do</h2>
+        <p class="max-w-xs mx-auto text-center text-gray-400 md:max-w-md mb-12">
+          We make data simple.
+        </p>
+      </div>
       <div className="relative container flex flex-col items-start px-6 mx-auto md:flex-row md:space-x-7">
         <div className="hidden absolute top-24 w-10/12 left-16 h-3 bg-cyan md:block"></div>
         <div className="absolute w-2 left-1/2 h-full -ml-1 bg-cyan md:hidden"></div>

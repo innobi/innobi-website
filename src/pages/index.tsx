@@ -4,6 +4,7 @@ import "../styles/global.css";
 import Nav from "../components/Nav";
 import Hero from "../components/Hero";
 import Team from "../components/Team";
+import Advantage from "../components/Advantage";
 import Testimonials from "../components/Testimonials";
 import CallToAction from "../components/CallToAction";
 
@@ -12,8 +13,9 @@ const IndexPage = () => {
     <React.Fragment>
       <Nav />
       <Hero />
-      <Team />
       <Testimonials />
+      <Advantage />
+      <Team />
       <CallToAction />
     </React.Fragment>
   );

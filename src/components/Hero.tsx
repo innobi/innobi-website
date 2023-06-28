@@ -8,7 +8,7 @@ const Hero = () => {
       <div className="container flex flex-col-reverse mx-auto p-6 lg:flex-row">
         <div className="flex flex-col space-y-10 mb-44 lg:mt-16 lg:w-1/2 xl:mb-52">
           <h1 className="text-5xl font-bold text-center lg:text-6xl lg:max-w-md lg:text-left">
-            Expert Data Engineering
+            Innovative Business Intelligence
           </h1>
           <p className="text-2xl text-center text-gray-400 lg:max-w-md lg:text-left">
             We make your data simple, performant and actionable.

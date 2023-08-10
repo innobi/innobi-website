@@ -2,15 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'Mont';
-  src: local('Mont Semi Bold'), local('Mont-Semi-Bold'),
-    url('/fonts/Mont-SemiBold.woff2') format('woff2'),
-    url('/fonts/Mont-SemiBold.woff') format('woff'),
-    url('/fonts/Mont-SemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-}
 
 /*
 ! tailwindcss v3.0.24 | MIT License | https://tailwindcss.com
@@ -56,7 +47,7 @@ html {
   -o-tab-size: 4;
      tab-size: 4;
   /* 3 */
-  font-family: Mont, sans-serif;
+  font-family: sans-serif;
   /* 4 */
 }
 

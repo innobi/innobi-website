@@ -10,9 +10,6 @@ module.exports = {
       "blue-dark": "#002255",
       gray: "#999999",
     },
-    fontFamily: {
-      sans: ["Mont SemiBold"],
-    },
     extend: {},
   },
   plugins: [],
